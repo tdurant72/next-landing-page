@@ -1,7 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Montserrat, Open_Sans } from "next/font/google";
 import "./globals.css";
-
+import { Toaster } from "@/components/ui/sonner"
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '700', '800', '900'], 
+  style: ['normal', 'italic'], 
+  variable: '--font-montserrat' 
+});
+const openSans = Open_Sans({
+  subsets: ['latin'], 
+  weight: ['400', '700'], 
+  style: ['normal', 'italic'], 
+  variable: "--font-open-sans", 
+});
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,9 +37,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${openSans.variable} antialiased`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );
